@@ -1,0 +1,65 @@
+version: "3.5"
+services:
+  np-redis:
+    image: redis:alpine
+    container_name: np-redis
+    volumes:
+      - np-redis:/data
+    ports:
+      - "16377:6379"
+    networks:
+      - np
+
+  np-mysql:
+    image: mysql:5.7.22
+    container_name: np-mysql
+    working_dir: /application
+    volumes:
+      - np-mysql:/var/lib/mysql/
+    environment:
+      MYSQL_ROOT_PASSWORD: KBHJ8765ljk767kh
+      MYSQL_DATABASE: app
+    ports:
+      - "2324:3306"
+    networks:
+      - np
+
+  np-nginx:
+    image: nginx:alpine
+    container_name: np-nginx
+    working_dir: /application
+    volumes:
+      - ../../:/application
+      - ./phpdocker/nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    networks:
+      - np
+    depends_on:
+      - np-php-fpm
+
+  np-php-fpm:
+    build: phpdocker/php-fpm
+    container_name: np-php-fpm
+    working_dir: /application
+    volumes:
+      - ../../:/application
+      - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+    ports:
+      - "9000"
+    networks:
+      - np
+    environment:
+      APP_ENV: local
+      CONTAINER_ROLE: app
+
+networks:
+  np:
+    driver: bridge
+
+volumes:
+  np-mysql:
+    driver: "local"
+  np-redis:
+    driver: "local"
+
