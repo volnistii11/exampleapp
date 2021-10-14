@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use App\Models\News;
+use App\Models\Review;
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class ReviewSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +14,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $categories = Category::factory(5)
-            ->has(News::factory(10))
+        $reviews = Review::factory(5)
             ->create();
-
     }
 }

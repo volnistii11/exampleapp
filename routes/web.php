@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,9 @@ Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
 Route::post('/news/create', [NewsController::class, 'store'])->name('news.store');
 Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
+
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('reviews.show');
 
 Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('categories.show');
 
