@@ -6,18 +6,18 @@ use App\Models\Category;
 use App\Models\News;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call([
-           CategorySeeder::class,
-           ReviewSeeder::class,
-        ]);
+        $categories = Category::factory(5)
+            ->has(News::factory(10))
+            ->create();
+
     }
 }
