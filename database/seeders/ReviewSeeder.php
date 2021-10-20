@@ -14,7 +14,7 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
-        $reviews = Review::factory(5)
+        $reviews = Review::factory(10)
             ->create();
     }
 }
