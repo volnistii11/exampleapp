@@ -32,6 +32,8 @@ Route::post('/news/create', [NewsController::class, 'store'])->name('news.store'
 Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+Route::get('/reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
+Route::post('/reviews/create', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('reviews.show');
 
 Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('categories.show');
