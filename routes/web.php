@@ -36,6 +36,8 @@ Route::get('/reviews/create', [ReviewController::class, 'create'])->name('review
 Route::post('/reviews/create', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('reviews.show');
 
-Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('categories.show');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
 
 require __DIR__.'/auth.php';

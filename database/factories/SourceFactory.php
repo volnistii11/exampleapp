@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\News;
+use App\Models\Source;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class NewsFactory extends Factory
+class SourceFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = News::class;
+    protected $model = Source::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,8 @@ class NewsFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->text(50),
-            'rating' => $this->faker->randomFloat(1, 1, 5),
-            'description' => $this->faker->text(300)
+            'name' => $this->faker->text(15),
+            'url' => $this->faker->url()
         ];
     }
 }
