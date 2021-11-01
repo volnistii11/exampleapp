@@ -7,6 +7,7 @@ use App\Http\Requests\News\StoreNewsRequest;
 use App\Http\Requests\NewsShowRequest;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Source;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -25,7 +26,8 @@ class NewsController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('news.create', compact('categories'));
+        $sources = Source::all();
+        return view('news.create', compact('categories', 'sources'));
     }
 
     public function store(StoreNewsRequest $request)

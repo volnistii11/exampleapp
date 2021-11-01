@@ -41,6 +41,16 @@
                 </div>
 
                 <div class="mt-4">
+                    <x-label for="source_id" :value="__('Source')"/>
+                    <select name="source_id" id="source_id"
+                            class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        @foreach($sources as $source)
+                            <option value="{{ $source->id }}">{{ $source->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mt-4">
                     <x-button>
                         {{ __('Create') }}
                     </x-button>
