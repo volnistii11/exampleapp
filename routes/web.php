@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,5 +40,6 @@ Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('review
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
+Route::post('/orders', [OrderController::class, 'store'])->name('orders.sore');
 
 require __DIR__.'/auth.php';
