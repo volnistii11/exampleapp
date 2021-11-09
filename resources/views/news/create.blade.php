@@ -41,6 +41,14 @@
                 </div>
 
                 <div class="mt-4">
+                    <x-label for="rating" :value="__('Rating')"/>
+
+                    <x-input id="rating" class="block mt-1 w-full" type="number" min="1" max="5" name="rating" :value="old('rating')"
+                             required
+                             autofocus/>
+                </div>
+
+                <div class="mt-4">
                     <x-label for="source_id" :value="__('Source')"/>
                     <select name="source_id" id="source_id"
                             class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
