@@ -22,7 +22,7 @@ class OrderController extends Controller
         try {
             $this->orderService->create($request->get('name'));
         } catch (CreatingOrderIsNotAvailableNowException $e) {
-            return redirect()->back()->with('warning', 'Can now create an order right now ;(!');
+            return redirect()->back()->with('warning', 'Can\'t create an order right now ;(!');
         }
 
         return redirect()->back()->with('success', 'Success!');
