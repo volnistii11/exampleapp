@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Listeners\Categories;
+namespace App\Listeners\Reviews;
 
-use App\Events\Categories\CategoryRetrieved;
+use App\Events\Reviews\ReviewCreating;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Log;
 
-class CreateCategoryLogs
+class CreateCreatingReviewLogs
 {
     /**
      * Create the event listener.
@@ -24,8 +25,8 @@ class CreateCategoryLogs
      * @param  object  $event
      * @return void
      */
-    public function handle(CategoryRetrieved $categoryRetrieved)
+    public function handle(ReviewCreating $reviewCreating)
     {
-        \Log::info('Retrieved category(is)' . $categoryRetrieved->category->news->count());
+        Log::info('Review creating ' . $reviewCreating->review->review);
     }
 }

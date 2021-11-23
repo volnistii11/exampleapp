@@ -6,9 +6,11 @@ use App\Http\Requests\NewsShowRequest;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Order;
+use App\Models\Review;
 use App\Observers\CategoryObserver;
 use App\Observers\NewsObserver;
 use App\Observers\OrderObserver;
+use App\Observers\ReviewObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -33,5 +35,6 @@ class AppServiceProvider extends ServiceProvider
         News::observe(NewsObserver::class);
         Order::observe(OrderObserver::class);
         Category::observe(CategoryObserver::class);
+        Review::observe(ReviewObserver::class);
     }
 }

@@ -2,20 +2,25 @@
 
 namespace App\Observers;
 
+use App\Events\News\NewsCreated;
+use App\Events\News\NewsCreating;
+use App\Events\News\NewsRetrieved;
 use App\Models\News;
 
 class NewsObserver
 {
     public function creating(News $news)
     {
-        if (!$news->rating) {
-            $news->rating = rand(1, 5);
-        }
-        \Log::info("Model is creating. ID: {$news->id}");
+        NewsCreating::dispatch($news);
     }
 
     public function created(News $news)
     {
-        \Log::info("Model created. ID: {$news->id}");
+        NewsCreated::dispatch($news);
+    }
+
+    public function retrieved(News $news)
+    {
+        NewsRetrieved::dispatch($news);
     }
 }
